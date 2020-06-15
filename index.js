@@ -1,13 +1,14 @@
 const express = require('express');
 const app = express();
-const router = express.Router();
 
-router.get('/', (req, res) => {
- res.send('Hello World!')
-});
 
-app.use('/', router);
+app.set('views', './views');
+app.set('view engine', 'pug');
+
+const routes = require('./routes/index');
+
+app.use('/', routes);
 
 app.listen(3000, () => {
- console.log('Example app listening on port 3000!')
+   console.log('Example app listening on port 3000!')
 });
